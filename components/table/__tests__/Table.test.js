@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, shallow, mount } from 'enzyme';
 import Table from '..';
+import Popover from '../../popover';
 
 const { Column, ColumnGroup } = Table;
 
@@ -79,5 +80,26 @@ describe('Table', () => {
     const wrapper = mount(<Table components={{ body: { wrapper: BodyWrapper1 } }} />);
     wrapper.setProps({ components: { body: { wrapper: BodyWrapper2 } } });
     expect(wrapper.find('tbody').props().id).toBe('wrapper2');
+  });
+
+  // https://github.com/ant-design/ant-design/pull/13541
+  // https://github.com/ant-design/ant-design/issues/13542
+  it('renders custom column title without error', () => {
+    const columns = [{
+      title: <Popover title="hello"><span title="Name">Name</span>null</Popover>,
+      key: 'name',
+      dataIndex: 'name',
+    }];
+    const data = [{
+      key: "1",
+      name: "John Brown",
+      age: 32,
+      address: "New York No. 1 Lake Park",
+    }];
+    expect(() =>
+      mount(<Table columns={columns} data={data} />)
+    ).not.toThrow();
+    const wrapper = mount(<Table columns={columns} data={data} />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });

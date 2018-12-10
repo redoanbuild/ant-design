@@ -125,3 +125,65 @@ exports[`Table renders JSX correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Table renders custom column title without error 1`] = `
+<div
+  class="ant-table-wrapper"
+>
+  <div
+    class="ant-spin-nested-loading"
+  >
+    <div
+      class="ant-spin-container"
+    >
+      <div
+        class="ant-table ant-table-default ant-table-empty ant-table-scroll-position-left"
+      >
+        <div
+          class="ant-table-content"
+        >
+          <div
+            class="ant-table-body"
+          >
+            <table
+              class=""
+            >
+              <colgroup>
+                <col />
+              </colgroup>
+              <thead
+                class="ant-table-thead"
+              >
+                <tr>
+                  <th
+                    class=""
+                  >
+                    <div>
+                      <span>
+                        <span
+                          title="Name"
+                        >
+                          Name
+                        </span>
+                        null
+                      </span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="ant-table-tbody"
+              />
+            </table>
+          </div>
+          <div
+            class="ant-table-placeholder"
+          >
+            No data
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
